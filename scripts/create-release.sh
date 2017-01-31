@@ -36,7 +36,7 @@ if [ -z "$EXISTING_VERSION_TAG" ]; then # use package version numbers if no prev
     NEW_VERSION_MAJOR=$PACKAGE_VERSION_MAJOR
     NEW_VERSION_MINOR=$PACKAGE_VERSION_MINOR
 
-elif [ "$PACKAGE_VERSION_MAJOR" -lt "$EXISTING_VERSION_MAJOR"]; then
+elif [ "$PACKAGE_VERSION_MAJOR" -lt "$EXISTING_VERSION_MAJOR" ]; then
     SKIP_TAGGING=true # can't decrement version - skip tagging
 
 elif [ "$PACKAGE_VERSION_MAJOR" -gt "$EXISTING_VERSION_MAJOR" ]; then
