@@ -1,11 +1,14 @@
 language: node_js
 sudo: required
+node_js: '6'
 before_script:
   - npm install -g bower
   - bower install
   - chmod -R +x scripts
 script: ./scripts/build.sh
-node_js: '6'
+after_script:
+  - git config credential.helper "store --file=.git/credentials"
+  - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 after_success:
   - ./scripts/create-release.sh
 dist: trusty
