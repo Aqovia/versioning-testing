@@ -1,0 +1,9 @@
+language: node_js
+sudo: required
+before_script:
+  - npm install -g bower
+  - bower install
+node_js: '6'
+after_success:
+  - ./scripts/create-release.sh
+dist: trusty
