@@ -32,8 +32,9 @@ NEW_VERSION_PATCH=0
 
 SKIP_TAGGING=false
 
-if [ -z "$EXISTING_VERSION_TAG" ]; then
-    # let default values remain
+if [ -z "$EXISTING_VERSION_TAG" ]; then # use package version numbers if no previous tags exist
+    NEW_VERSION_MAJOR=$PACKAGE_VERSION_MAJOR
+    NEW_VERSION_MINOR=$PACKAGE_VERSION_MINOR
 
 elif [ "$PACKAGE_VERSION_MAJOR" -lt "$EXISTING_VERSION_MAJOR"]; then
     SKIP_TAGGING=true # can't decrement version - skip tagging
@@ -53,7 +54,7 @@ else
 fi
 
 # skip tagging if a versioning mismatch has occurred
-if [ "$SKIP_TAGGING" = true]; then
+if [ "$SKIP_TAGGING" = true ]; then
     echo "*WARNING* Skipping tagging due to versioning mismatch"
     exit
 fi
