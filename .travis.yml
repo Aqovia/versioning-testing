@@ -3,6 +3,7 @@ sudo: required
 before_script:
   - npm install -g bower
   - bower install
+script: ./scripts/build.sh
 node_js: '6'
 after_success:
   - ./scripts/create-release.sh
