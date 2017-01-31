@@ -6,9 +6,8 @@ before_script:
   - bower install
   - chmod -R +x scripts
 script: ./scripts/build.sh
-after_script:
+after_success:
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
-after_success:
   - ./scripts/create-release.sh
 dist: trusty
