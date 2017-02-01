@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# check current branch, and exit if not master
-if ! [ "$TRAVIS_BRANCH" = "master" ]; then
-    echo "*NOTICE* Skipping tagging since this is not the master branch"
-    exit
-fi
-
-
 # get highest tag number
 EXISTING_VERSION_TAG=`git describe --abbrev=0 --tags`
 EXISTING_VERSION=${EXISTING_VERSION_TAG:1}
