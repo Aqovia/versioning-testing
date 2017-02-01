@@ -2,12 +2,15 @@ language: node_js
 sudo: required
 node_js: '6'
 before_script:
-  - npm install -g bower
-  - bower install
-  - chmod -R +x scripts
-script: ./scripts/build.sh
+- npm install -g bower
+- bower install
+- chmod -R +x scripts
+script: "./scripts/build.sh"
 after_success:
-  - git config credential.helper "store --file=.git/credentials"
-  - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
-  - ./scripts/create-release.sh
+- git config credential.helper "store --file=.git/credentials"
+- echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
+- "./scripts/create-release.sh"
 dist: trusty
+env:
+  global:
+    secure: H5ea878peAiYTwMuIiFnJoX4sYzz0MKuFsxT9DRgdkUDYy5MH+2r9nabsaCJOyLnaZBcfoImMXDjOW3eLaT+TsbsOHpCXAdW9Ztsb57oqfBMM7ys8fKntdZMtg9i71SVewz5l3H26HH9PxO9Zrg72A0GMYT+DMMofhU+WqLX8UVu2iG4qL08vwAtqaE0nKEjpX6hAygaIgUQjD+PXaQNxY1HczLFDGl8Scdw/qinFWYZ6EQLGc6L7c/pzjj5Gb2dsmt0neqBVYYDF0qCKirgfFBdF+bdmMsPuna3GgDavlnl+D+L5hlCe3u/+HtXGLv/HIYU0BWsC4Js1qKKbRXmZ8OikDZA1jVjkk/u2m6fdWYK56+JTeIOPH+ipqgnJDk4SoR9cGWXtk29Bhh4Ql+hprqBkRHlenLLA9IRRfCt+jWnVD1qJmcOix/WhEoGgGvRmcd17EVXCmvpcv9Q6bjXvfAzBvsuRmJu8ZxiMebS2APxyfjNHbFE8vRi3pYiQ3hNsM8QlQA6o/fws40bYQ8igNkEWaku6/nr/pObMYHKVsxm6hxt+KSYndIe4O00HJAT1ukAcG1f6DjqOqqALRh7Uxlasl+v5s1Vc8hnpuq8HJNRBJTFj3sHO9IqTk0XKW17MKAcuWkAV6bMP9cD3a9kHpkICOKH5HCmEhAkn5eHQ6c=
