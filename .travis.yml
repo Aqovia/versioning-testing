@@ -9,7 +9,7 @@ script: "./scripts/build.sh"
 after_success:
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
-  - if [ "${TRAVIS_BRANCH}" = "master" ]; then ./scripts/create-release.sh; fi
+  - if [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then ./scripts/create-release.sh; fi
 dist: trusty
 env:
   global:
