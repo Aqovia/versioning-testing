@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # check current branch, and exit if not master
-CURRENT_BRANCH=`git symbolic-ref --short HEAD`
-if ! [ "$CURRENT_BRANCH" = "master" ]; then
+if ! [ "$TRAVIS_BRANCH" = "master" ]; then
     echo "*NOTICE* Skipping tagging since this is not the master branch"
     exit
 fi
